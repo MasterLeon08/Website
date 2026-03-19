@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <title>Sổ Tay Ký Ức - Khánh Hân</title>
 
 <style>
-
 body{
     margin:0;
     font-family: "Courier New", monospace;
-    background:#f4ecd8;
-    color:#333;
+    background:#fff7f0;
+    color:#444;
+    overflow-x:hidden;
 }
 
 /* Cuộn mượt */
@@ -21,13 +20,14 @@ html{
 
 /* Header */
 header{
-    background:#8b5e3c;
+    background:#ffb6b9;
     color:white;
     padding:25px;
     text-align:center;
+    border-bottom:5px dashed white;
 }
 
-/* Layout giống trang vở */
+/* Layout */
 .container{
     display:grid;
     grid-template-columns:1fr 3fr;
@@ -35,12 +35,12 @@ header{
 
 /* Menu */
 .menu{
-    background:#d9c7a6;
+    background:#ffe0ac;
     padding:20px;
 }
 
 .menu h3{
-    border-bottom:2px solid #8b5e3c;
+    border-bottom:2px solid #ff8fab;
 }
 
 .menu ul{
@@ -50,16 +50,17 @@ header{
 
 .menu li{
     padding:10px 0;
+    cursor:pointer;
 }
 
 .menu a{
     text-decoration:none;
-    color:#333;
+    color:#444;
     font-weight:bold;
 }
 
 .menu a:hover{
-    color:#8b5e3c;
+    color:#ff8fab;
 }
 
 /* Nội dung */
@@ -70,51 +71,116 @@ header{
 /* Khung ảnh */
 .photo{
     border:8px solid white;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
-    margin:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    margin:20px;
     display:inline-block;
+    border-radius:15px;
 }
 
-.photo img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.photo img{
+    width:230px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.photo img:hover{
+    transform:scale(1.1);
+}
+
+/* Giới thiệu */
+.profile{
+    background:#fff;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:30px;
+    box-shadow:0 5px 10px rgba(0,0,0,0.1);
+    border-left:6px solid #ff8fab;
+    display:flex;
+    align-items:flex-start;
+    gap:20px;
+}
+
+.profile img{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border-radius:10px;
 }
 
 /* Nhật ký */
 .diary{
     background:white;
     padding:25px;
-    margin-top:40px;
-    border-left:6px solid #8b5e3c;
+    margin-top:30px;
+    border-radius:15px;
+    border-left:6px solid #ff8fab;
 }
 
 /* Footer */
 footer{
     text-align:center;
     padding:20px;
-    background:#8b5e3c;
+    background:#ffb6b9;
     color:white;
+    margin-top:20px;
 }
 
-</style>
+/* Modal ảnh */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    padding-top:100px;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+}
 
+.modal img{
+    display:block;
+    margin:auto;
+    max-width:80%;
+    border-radius:10px;
+}
+
+/* Trái tim bay */
+.heart{
+    position:fixed;
+    color:#ff6b81;
+    animation:floatUp 4s linear infinite;
+    font-size:20px;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-800px);
+        opacity:0;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<header>
-<h1 id="home">📓 Sổ Tay Ký Ức</h1>
-<p>Nơi lưu giữ thanh xuân của Khánh Hân</p>
+<header id="home">
+<h1>📓 Sổ Tay Ký Ức ✨</h1>
+<p>Nơi lưu giữ thanh xuân của Khánh Hân 💖</p>
 </header>
 
 <div class="container">
 
 <div class="menu">
-<h3>Mục</h3>
+<h3>🌷 Mục</h3>
 <ul>
 <li><a href="#home">🏠 Trang chủ</a></li>
-<li><a href="#photos">📷 Ảnh của lớp mình</a></li>
+<li><a href="#intro">🙋‍♀️ Giới thiệu</a></li>
+<li><a href="#photos">📷 Ảnh của mình</a></li>
 <li><a href="#friends">👯 Bạn bè</a></li>
 <li><a href="#diary">📝 Nhật ký</a></li>
 </ul>
@@ -122,47 +188,93 @@ footer{
 
 <div class="content">
 
-<!-- Ảnh -->
-
-<h2 id="photos">📷 Ảnh của lớp mình</h2>
-
-<div class="photo">
-<img src="z7623079121791_127d710e6bf8968e7e2db38bf82894da.jpg">
+<!-- GIỚI THIỆU -->
+<div class="profile" id="intro">
+<img src="../images/avatar.jpg" alt="Ảnh Khánh Hân">
+<div>
+<h2>🙋‍♀️ Giới thiệu bản thân</h2>
+<p><b>✨ Tên:</b> Khánh Hân</p>
+<p><b>🌸 Biệt danh:</b> Bé Hân / Hân đáng iu</p>
+<p><b>🎂 Tuổi:</b> 17</p>
+<p><b>🏫 Lớp:</b> 12C4</p>
+<p><b>💭 Ước mơ:</b> Trở thành một người hạnh phúc và sống hết mình với thanh xuân 💫</p>
+<p><b>💖 Sở thích:</b> Chụp ảnh, nghe nhạc, đi chơi với bạn bè</p>
+</div>
 </div>
 
+<!-- ẢNH -->
+<h2 id="photos">📷 Ảnh chung với lớp</h2>
 <div class="photo">
-<img src="z7623079128075_50e0856e5cc7d35ccaaea531bd8d1c21.jpg">
+<img src="../images/chan_dung.jpg" alt="Chân dung">
+</div>
+<div class="photo">
+<img src="../images/ki_niem.jpg" alt="Kỷ niệm">
+</div>
+<div class="photo">
+<img src="../images/ban_be.jpg" alt="Bạn bè">
 </div>
 
-<div class="photo">
-<img src="z7623079132300_ebabf93c1013319a8a3604da25858bf9.jpg">
-</div>
-
-<!-- Bạn bè -->
-
+<!-- BẠN BÈ -->
 <h2 id="friends">👯 Bạn bè</h2>
 <p>Danh sách bạn bè của lớp sẽ được thêm tại đây 💖</p>
 
-<!-- Nhật ký -->
-
+<!-- NHẬT KÝ -->
 <div class="diary" id="diary">
 <h2>📝 Nhật ký</h2>
 <p>
-Những năm tháng học cùng 12C04 là khoảng thời gian đáng nhớ nhất.
+Những năm tháng học cùng 12C4 là khoảng thời gian đáng nhớ nhất.
 Mỗi ngày đến lớp đều có tiếng cười, những câu chuyện ngốc nghếch,
 những lần cùng nhau ôn bài trước giờ kiểm tra.
 Có thể sau này mỗi người một nơi,
-nhưng ký ức này sẽ luôn còn mãi.
+nhưng ký ức này sẽ luôn còn mãi 💕
 </p>
 </div>
 
 </div>
-
 </div>
 
 <footer>
-© 2026 - Memory Book
+© 2026 - Memory Book 💗
 </footer>
+
+<!-- Modal -->
+<div id="imgModal" class="modal">
+<img id="modalImg">
+</div>
+
+<script>
+// Click ảnh phóng to
+const images = document.querySelectorAll(".photo img");
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+
+images.forEach(img => {
+    img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    }
+});
+
+modal.onclick = function(){
+    modal.style.display = "none";
+}
+
+// Trái tim bay
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.bottom = "0px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
+}, 500);
+</script>
 
 </body>
 </html>
